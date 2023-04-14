@@ -1,3 +1,15 @@
+# **More robuste PCA**
+
+Robust PCA factors a matrix into the sum of two matrices, $M=L+S$, where $M$ is the original matrix, $L$ is low-rank, and $S$ is sparse. This is what we'll be using for the background removal problem! Low-rank means that the matrix has a lot of redundant information. Sparse means that the matrix has mostly zero entries 
+
+Original paper is here https://arxiv.org/pdf/0912.3599.pdf
+
+
+
+
+
+
+
 # **About UMAP and LDA**
   
 ## **UMAP**
@@ -37,7 +49,12 @@ Latent Dirichlet allocation (LDA) is a generative probabilistic model of a corpu
 that documents are represented as random mixtures over latent topics, where each topic is characterized by a distribution over words.1
 LDA assumes the following generative process for each document w in a corpus D:
 
-* $N \sim Poisson(\xi)$ 
-* 
+* $N \sim Poisson(\xi)$ , $N$ document shape
+* Choose $\theta \sim Dir(\alpha)$
+* For each of the $N$ words $w_n$:
+     
+     a. Choose topic $z_n \sim Multinomial(\theta)$ 
+
+     b. Choose a word $w_n$ from $p(w_n|z_n,\beta)$, a multinomial probability conditioned on the topic $z_n$
 
 For more informarion you can see https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf
