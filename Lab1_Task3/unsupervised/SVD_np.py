@@ -3,31 +3,26 @@ import numpy as np
 
 class SVD:
 
-    def __init__(self, n_components):
+    def __init__(self, n_components= 2):
         self.n_components = n_components
         self.components = None
 
     def fit(self,X):
         U, D, V = np.linalg.svd(X)
         self.components = V[:self.n_components,:]
-        
+        self.explained_variance_ = (D ** 2) / (X.shape[0] - 1)
+        self.singular_values_ = D    
 
     def transform(self,X):
-        try:
-            X_tranformed = np.dot(X, self.components.T)
-            return X_tranformed
-        except:
-            return X@self.components
+        X_tranformed = np.dot(X, self.components.T)
+        return X_tranformed
+
     
     def fit_transform(self,X):
         U, D, V = np.linalg.svd(X)
         self.components = V[:self.n_components,:]
-
-        try:
-            X_tranformed = X.dot(self.components.T)
-            return X_tranformed
-        except: 
-            X@self.components
+        X_tranformed = X.dot(self.components.T)
+        return X_tranformed
 
     def matrix_components(self,X):
         U, D, V = np.linalg.svd(X)

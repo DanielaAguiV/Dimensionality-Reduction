@@ -8,3 +8,6 @@ Lab1_Task3/__pycache__/**
 Lab1_Task3/unsupervised/__pycache__/**
 Lab1_Task3/unsupervised/__pycache__/SVD_np.cpython-39.pyc
 Lab1_Task3/unsupervised/__pycache__/SVD.cpython-39.pyc
+__pycache__
+/Lab1_Task11/api/__pycache__
+/Lab1_Task11/api/src/__pycache__
