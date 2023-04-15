@@ -16,7 +16,7 @@ class Picture:
 
     def image_asarray(self):
         img = Image.open(self.path).resize((256,256)).convert('L')
-        numpydata = np.asarray(img)
+        numpydata = np.array(img)
         return numpydata
 
 
@@ -27,5 +27,5 @@ class PictureOperations:
     
     @staticmethod
     def dif_images(array_1,array_2):
-        return np.mean(np.sum(np.array([array_1,-array_2]),axis = 0))
+        return np.sqrt(np.sum(np.sum(array_1-array_2,axis = 0)))
     
